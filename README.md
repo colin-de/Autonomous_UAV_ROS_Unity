@@ -1,24 +1,8 @@
-# Group Projects - Advanced Challenge 1 – Simulation & Mapping
-
-**Task: Use a mapping approach of your choice to navigate an unknown environment**
-
 ## Overview
 
 ![Alt text](images/Auto_overview.drawio__2_.png)
 
 Please see the README's located in each of the linked packages under [Setup](#setup) for more details.
-
-## Setup
-
-- [Simulation](catkin_ws/src/simulation) (Unity environment) - Luca
-
-- [Vision](catkin_ws/src/vision_pkg)  - Junpeng
-
-- [Controller](catkin_ws/src/controller_pkg) - Autumn
-
-- [Mapping](catkin_ws/src/mapping) - Shervin, Weihang
-
-- [Navigation](catkin_ws/src/navigation) - Shervin
 
 ## Simulation instructions
 
