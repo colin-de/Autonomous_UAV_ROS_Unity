@@ -1,0 +1,7 @@
+image: src/mapping/maps/range10big_env.pgm
+resolution: 2.000000
+origin: [-22.000000, -68.000000, -nan]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196
+

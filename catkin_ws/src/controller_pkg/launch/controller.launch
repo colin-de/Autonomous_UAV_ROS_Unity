@@ -1,0 +1,4 @@
+<launch>
+  <node name="controller_node" pkg="controller_pkg" type="controller_node" clear_params="true"/>
+  <rosparam file="$(find controller_pkg)/config/controller_params.yaml" />
+</launch>

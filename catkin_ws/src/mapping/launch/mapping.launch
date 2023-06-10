@@ -1,0 +1,6 @@
+<launch>
+  <include file="$(find vision_pkg)/launch/vision.launch"/>
+  <include file="$(find mapping)/launch/rviz.launch"/>
+  <include file="$(find mapping)/launch/octomap_2d.launch"/>
+  <include file="$(find mapping)/launch/octomap_3d.launch"/>
+</launch>

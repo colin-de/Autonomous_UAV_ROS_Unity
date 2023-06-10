@@ -1,0 +1,66 @@
+<launch>
+  <arg name="load_params" default="true" />
+  <arg name="corrupt_state_estimate" default="true" />
+  <arg name="right_image_topic" default="/realsense/rgb/right_image_raw" />
+  <arg name="right_info_topic" default="/realsense/rgb/right_image_info" />
+  <arg name="left_image_topic" default="/realsense/rgb/left_image_raw" />
+  <arg name="left_info_topic" default="/realsense/rgb/left_image_info" />
+  <arg name="depth_image_topic" default="/realsense/depth/image" />
+  <arg name="depth_info_topic" default="/realsense/depth/camera_info" />
+
+  <include file="$(find simulation)/launch/unity_ros.launch" >
+    <arg name="load_params" value="$(arg load_params)" />
+    <arg name="right_image_topic" value="$(arg right_image_topic)" />
+    <arg name="right_info_topic" value="$(arg right_info_topic)" />
+    <arg name="left_image_topic" value="$(arg left_image_topic)" />
+    <arg name="left_info_topic" value="$(arg left_info_topic)" />
+    <arg name="depth_image_topic" value="$(arg depth_image_topic)" />
+    <arg name="depth_info_topic" value="$(arg depth_info_topic)" />
+  </include>
+
+  <node name="Simulation" pkg="simulation" type="City_Scenary.x86_64"/>
+
+  <node pkg="simulation"
+        type="state_estimate_corruptor_node"
+        name="state_estimate_corruptor"
+        output="screen">
+
+    <!-- random-walk drift factor (grows with distance traveled) (sigma / m) -->
+    <param if="$(arg corrupt_state_estimate)" name="drift_rw_factor" value="0.03"/>
+    <param unless="$(arg corrupt_state_estimate)" name="drift_rw_factor" value="0.0"/>
+
+    <!-- independent white noise -->
+    <param if="$(arg corrupt_state_estimate)" name="pos_white_sig" value="0.005"/>
+    <param unless="$(arg corrupt_state_estimate)" name="pos_white_sig" value="0.0"/>
+
+    <!-- average number of seconds between jumps/drift updates -->
+    <param if="$(arg corrupt_state_estimate)" name="jump_seconds" value="20.0"/>
+    <param unless="$(arg corrupt_state_estimate)" name="jump_seconds" value="-1.0"/>
+  </node>
+
+  <node name="w_to_unity" pkg="simulation" type="w_to_unity"/>
+
+
+
+  <node pkg="tf2_ros" type="static_transform_publisher"
+        name="sim_true_body"      args="0 0 0 0 0 0 /Quadrotor/TrueState /true_body" />
+
+  <node pkg="tf2_ros" type="static_transform_publisher"
+        name="sim_rgb_camera"      args="0 0 0 0 0 0 /camera /Quadrotor/RGBCameraLeft " />
+
+  <node pkg="tf2_ros" type="static_transform_publisher"
+        name="sim_depth_camera"      args="0 0 0 0 0 0 /depth_camera /Quadrotor/DepthCamera" />
+
+  <node pkg="tf2_ros" type="static_transform_publisher"
+        name="sim_left_camera"      args="0 0 0 0 0 0 /camera /Quadrotor/RGBCameraLeft" />
+
+  <node pkg="tf2_ros" type="static_transform_publisher"
+        name="camera_to_body"      args="0 0 0 0 0 0 /true_body /camera" />
+
+  <node pkg="tf2_ros" type="static_transform_publisher"
+        name="depth_camera_to_body"      args="0 0 0 0 0 0 /true_body /depth_camera" />
+
+  <node pkg="tf2_ros" type="static_transform_publisher"
+        name="depth_camera_frame_to_body"      args="0 0 0 0 0 0 /true_body /Quadrotor/Sensors/DepthCamera" />
+
+</launch>

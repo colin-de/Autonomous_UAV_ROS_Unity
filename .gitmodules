@@ -1,0 +1,23 @@
+[submodule "catkin_ws/src/eigen_catkin"]
+	path = catkin_ws/src/eigen_catkin
+	url = https://github.com/ethz-asl/eigen_catkin.git
+[submodule "catkin_ws/src/eigen_checks"]
+	path = catkin_ws/src/eigen_checks
+	url = https://github.com/ethz-asl/eigen_checks.git
+[submodule "catkin_ws/src/catkin_simple"]
+	path = catkin_ws/src/catkin_simple
+	url = https://github.com/catkin/catkin_simple.git
+[submodule "catkin_ws/src/glog_catkin"]
+	path = catkin_ws/src/glog_catkin
+	url = https://github.com/ethz-asl/glog_catkin.git
+[submodule "catkin_ws/src/nlopt"]
+	path = catkin_ws/src/nlopt
+	url = https://github.com/ethz-asl/nlopt.git
+[submodule "catkin_ws/src/mav_trajectory_generation"]
+	path = catkin_ws/src/mav_trajectory_generation
+	url = https://github.com/ethz-asl/mav_trajectory_generation.git
+[submodule "catkin_ws/src/octomap_mapping"]
+	path = catkin_ws/src/octomap_mapping
+	url = https://github.com/OctoMap/octomap_mapping
+
+

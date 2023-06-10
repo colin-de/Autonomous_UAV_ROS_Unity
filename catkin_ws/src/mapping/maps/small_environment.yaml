@@ -1,0 +1,7 @@
+image: small_environment.pgm
+resolution: 0.050000
+origin: [-13.450000, -29.650000, -nan]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196
+

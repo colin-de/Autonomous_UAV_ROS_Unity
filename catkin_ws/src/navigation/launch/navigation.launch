@@ -1,0 +1,9 @@
+<launch>
+        <node name="navigator" pkg="navigation" type="navigation" output="screen" clear_params = "true"/>
+
+        <!--- Trajectory sampler -->
+        <node name="sampler" pkg="mav_trajectory_generation_ros" type="trajectory_sampler_node" output="screen">
+            <remap from="path_segments_4D" to="trajectory"/>
+        </node>
+
+</launch>

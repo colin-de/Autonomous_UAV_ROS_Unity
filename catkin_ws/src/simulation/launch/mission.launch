@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="simulation" type="sim_mission.sh" name="sim_mission" output="screen"/>
+</launch>

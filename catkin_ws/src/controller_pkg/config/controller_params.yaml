@@ -1,0 +1,23 @@
+# Large environment, highest FPS 
+# params: {
+#     kx : 7.5,
+#     kv : 4.7,
+#     kr : 3.5,
+#     komega : 1.05
+# }
+
+# pre-compiled 200x200 unity environment environment
+params: {
+    kx : 6.5,
+    kv : 3.7,
+    kr : 3.2,
+    komega : 1.00
+}
+
+# pre-compiled testing environment
+# params: {
+#     kx : 9.6,
+#     kv : 5.5,
+#     kr : 9.6,
+#     komega : 1.15
+# }
